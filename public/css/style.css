@@ -1,0 +1,19 @@
+.jumboimg{
+    background-image:url(../images/gaming.gif); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: bottom; 
+    min-height:500px;
+    opacity: 0.7;
+}
+
+.title{
+    opacity:1;
+    font-size:5em
+}
+
+.article-box{
+    background-color:#666666;
+    padding-top:20px;
+    color:white;
+}
