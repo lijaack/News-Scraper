@@ -42,4 +42,13 @@ module.exports = function(app){
         });
       });
 
+    app.get("/", function(req, res){
+
+        db.Article.find({}).then(function(dbArticle){
+            var hbsObject = {
+                article: dbArticle
+            };
+            res.render("index", hbsObject)
+        })
+    })
 };
