@@ -17,3 +17,7 @@
     padding-top:20px;
     color:white;
 }
+html body{
+    background-color:#666666;
+    min-height:100%
+}
