@@ -14,11 +14,7 @@
 
 {{!-- jumbotron --}}
 <div class="jumbotron jumbotron-fluid jumboimg" style="margin-bottom:0;">
-  <div class="container">
-      <br>
-      <br>
-    <h1 class="text-center text-light title">Gaming News</h1>
-  </div>
+    <h1 class="text-light text-center title">Gaming News</h1>
 </div>
 
 {{!-- articles --}}
@@ -30,9 +26,7 @@
             <div class="container">
             <article class="row">
 
-                <div class="row">
-                    <h2>{{title}}</h2>
-                </div>
+                <h2>{{title}}</h2>
                 <div class="row">
                     <div class="col-4">
                         <img src="{{image}}" style="width:100%">
@@ -40,10 +34,10 @@
                     <div class="col-8">
                         <a href="https://www.gamespot.com{{link}}"> visit article here</a>
                         <p>{{summary}}</p>
-                        <button type="button" class="btn btn-primary" data-id={{id}}>
+                        <button type="button" id="save-article" class="btn btn-primary" data-id={{id}}>
                             Save Article
                         </button>
-                        <button type="button" class="btn btn-danger" data-id={{id}}>
+                        <button type="button" id="delete-article" class="btn btn-danger" data-id={{id}}>
                             Delete Article
                         </button>
                     </div>

@@ -62,4 +62,12 @@ module.exports = function(app){
     app.get("/saved", function(req, res){
         res.render("saved")
     })
+
+    app.delete("/article", function(req, res){
+        console.log("3")
+        db.Article.remove({_id: req.body.id}).then(function(result){
+            console.log("4")
+            res.json("deleted");
+        })
+    })
 };

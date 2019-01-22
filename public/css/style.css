@@ -4,10 +4,12 @@
     background-size: cover; 
     background-position: bottom; 
     min-height:500px;
+    position: relative;
 }
 
 .title{
-    font-size:5em
+    font-size:5em;
+    bottom:50%;
 }
 
 .article-box{
