@@ -4,10 +4,22 @@ $(document).ready(function() {
     $("#delete-article").on("click", deleteArticle);
 
     function saveArticle(){
+        console.log("1")
+        var id = $(this).data("id");
+        $.ajax({
+            method: "POST",
+            url: "/saved",
+            data: {
+                id: id
+            }
+        })
+        .then(function(data) {
+            console.log("2")
 
+            location.reload();
+        });
     }
     function deleteArticle(){
-        console.log("1")
         var id = $(this).data("id");
         $.ajax({
             method: "DELETE",
@@ -16,13 +28,8 @@ $(document).ready(function() {
                 id: id
             }
         })
-        // With that done
         .then(function(data) {
-            console.log("2")
 
-            // Log the response
-            console.log(data);
-            // Empty the notes 
             location.reload();
         });
     }

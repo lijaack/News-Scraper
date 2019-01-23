@@ -5,7 +5,7 @@ module.exports = function(app){
 
     app.get("/scrape", function(req, res) {
         // First, we grab the body of the html with axios
-        db.Article.deleteMany({}).then(function(){
+        db.Article.remove({saved:false}).then(function(){
             axios.get("https://www.gamespot.com/news/").then(function(response) {
                 // Then, we load that into cheerio and save it to $ for a shorthand selector
                 var $ = cheerio.load(response.data);        
@@ -51,7 +51,7 @@ module.exports = function(app){
 
     app.get("/", function(req, res){
 
-        db.Article.find({}).then(function(dbArticle){
+        db.Article.find({saved: false}).then(function(dbArticle){
             var hbsObject = {
                 article: dbArticle
             };
@@ -60,13 +60,25 @@ module.exports = function(app){
     })
 
     app.get("/saved", function(req, res){
-        res.render("saved")
+        db.Article.find({saved: true}).then(function(dbArticle){
+            var hbsObject = {
+                article: dbArticle
+            };
+            res.render("saved", hbsObject)
+        })
+    })
+
+    app.post("/saved",function(req, res){
+        console.log("3")
+
+        db.Article.update({_id: req.body.id}, {$set: {"saved": true}}).then(function(result){
+            console.log("4")
+            res.json("deleted");
+        })
     })
 
     app.delete("/article", function(req, res){
-        console.log("3")
         db.Article.remove({_id: req.body.id}).then(function(result){
-            console.log("4")
             res.json("deleted");
         })
     })
