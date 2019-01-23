@@ -40,8 +40,8 @@ module.exports = function(app){
         //         res.redirect("/");
         //       });
         // })
-        
-      });
+        res.redirect("/");
+    });
 
     app.get("/", function(req, res){
 
