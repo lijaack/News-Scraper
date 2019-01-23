@@ -99,4 +99,9 @@ module.exports = function(app){
             res.json("deleted");
         })
     })
+    app.delete("/note", function(req, res){
+        db.Note.remove({_id: req.body.id}).then(function(result){
+            res.json("deleted");
+        })
+    })
 };

@@ -52,7 +52,7 @@
 
                         
                         <div class="modal-header">
-                            <h5 class="modal-title " id="note-modal-title-{{id}}">Notes</h5>
+                            <h2 class="modal-title " id="note-modal-title-{{id}}">Notes</h2>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -60,6 +60,9 @@
                         <div class="container">
                             {{#each note}}
                             <p>{{body}}</p>
+                            <button type="button" class="btn btn-danger btn-sm delete-note" data-id={{id}}>
+                                Delete Note
+                            </button>
                             {{/each}}
                         </div>
 

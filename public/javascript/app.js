@@ -3,7 +3,7 @@ $(document).ready(function() {
     $(".save-article").on("click", saveArticle);
     $(".delete-article").on("click", deleteArticle);
     $(".add-note").on("click", addNote);
-
+    $(".delete-note").on("click", deleteNote)
 
     function saveArticle(){
         console.log("1")
@@ -54,7 +54,20 @@ $(document).ready(function() {
         });
     }
 
+    function deleteNote(){
+        var id = $(this).data("id");
+        $.ajax({
+            method: "DELETE",
+            url: "/note",
+            data: {
+                id: id
+            }
+        })
+        .then(function(data) {
 
+            location.reload();
+        });
+    }
 
 
 
