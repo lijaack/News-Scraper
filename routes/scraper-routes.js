@@ -4,7 +4,7 @@ var db = require("../models");
 module.exports = function(app){
 
     app.get("/scrape", function(req, res) {
-        // db.Article.deleteMany({saved:false}).then(function(){
+        db.Article.deleteMany({saved:false}).then(function(){
             // axios.get("https://www.gamespot.com/news/").then(function(response) {
             //     var $ = cheerio.load(response.data);        
             //     $("article.media-article").each(function(i, element) {
@@ -38,7 +38,7 @@ module.exports = function(app){
                     });
                 // });
             // });
-        // })
+        })
     });
 
     app.get("/", function(req, res){
