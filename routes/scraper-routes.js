@@ -4,42 +4,42 @@ var db = require("../models");
 module.exports = function(app){
 
     app.get("/scrape", function(req, res) {
-        db.Article.deleteMany({saved:false}).then(function(){
-            // axios.get("https://www.gamespot.com/news/").then(function(response) {
-            //     var $ = cheerio.load(response.data);        
-            //     $("article.media-article").each(function(i, element) {
-            //       // Save an empty result object
-            //       var result = {};
+        // db.Article.deleteMany({saved:false}).then(function(){
+        //     axios.get("https://www.gamespot.com/news/").then(function(response) {
+        //         var $ = cheerio.load(response.data);        
+        //         $("article.media-article").each(function(i, element) {
+        //           // Save an empty result object
+        //           var result = {};
                
-            //       // Add the text and href of every link, and save them as properties of the result object
-            //       result.title = $(this)
-            //           .find("h3.media-title")
-            //           .text();
-            //       result.link = $(this)
-            //           .children("a")
-            //           .attr("href");
-            //       result.summary = $(this)
-            //           .find("p.media-deck")
-            //           .text()
-            //       result.image = $(this)
-            //           .find("div.media-img")
-            //           .children("img")
-            //           .attr("src")
+        //           // Add the text and href of every link, and save them as properties of the result object
+        //           result.title = $(this)
+        //               .find("h3.media-title")
+        //               .text();
+        //           result.link = $(this)
+        //               .children("a")
+        //               .attr("href");
+        //           result.summary = $(this)
+        //               .find("p.media-deck")
+        //               .text()
+        //           result.image = $(this)
+        //               .find("div.media-img")
+        //               .children("img")
+        //               .attr("src")
       
-            //       // Create a new Article using the `result` object built from scraping
-            //       db.Article.create(result)
-            //         .then(function(dbArticle) {
-            //         })
-            //         .catch(function(err) {
-            //           // If an error occurred, log it
-            //           console.log(err);
-            //         });
-            //     });
+        //           // Create a new Article using the `result` object built from scraping
+        //           db.Article.create(result)
+        //             .then(function(dbArticle) {
+        //             })
+        //             .catch(function(err) {
+        //               // If an error occurred, log it
+        //               console.log(err);
+        //             });
+        //         });
             
-            //     // Send a message to the client
-            //     res.redirect("/");
-            //   });
-        })
+        //         // Send a message to the client
+        //         res.redirect("/");
+        //       });
+        // })
         
       });
 
