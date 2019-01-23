@@ -6,7 +6,6 @@ $(document).ready(function() {
     $(".delete-note").on("click", deleteNote)
 
     function saveArticle(){
-        console.log("1")
         var id = $(this).data("id");
         $.ajax({
             method: "POST",
@@ -16,7 +15,6 @@ $(document).ready(function() {
             }
         })
         .then(function(data) {
-            console.log("2")
 
             location.reload();
         });

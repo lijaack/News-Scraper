@@ -29,12 +29,9 @@ module.exports = function(app){
                       .children("img")
                       .attr("src")
       
-                    console.log(result)
                   // Create a new Article using the `result` object built from scraping
                   db.Article.create(result)
                     .then(function(dbArticle) {
-                      // View the added result in the console
-                      console.log(dbArticle);
                     })
                     .catch(function(err) {
                       // If an error occurred, log it
@@ -63,7 +60,6 @@ module.exports = function(app){
         db.Article.find({saved: true})
         .populate("note")
         .then(function(dbArticle){
-            console.log(dbArticle)
             var hbsObject = {
                 article: dbArticle
             };
@@ -73,7 +69,6 @@ module.exports = function(app){
 
     app.post("/saved",function(req, res){
         db.Article.update({_id: req.body.id}, {$set: {"saved": true}}).then(function(result){
-            console.log("4")
             res.json("deleted");
         })
     })
