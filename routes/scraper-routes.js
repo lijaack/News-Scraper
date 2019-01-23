@@ -11,7 +11,6 @@ module.exports = function(app){
                   // Save an empty result object
                   var result = {};
                
-                  // Add the text and href of every link, and save them as properties of the result object
                   result.title = "asdf"
                 //   $(this)
                 //       .find("h3.media-title")
@@ -24,25 +23,23 @@ module.exports = function(app){
                 //   $(this)
                 //       .find("p.media-deck")
                 //       .text()
-                  result.image = "asdf"
+                  result.image = "sdftgsdf"
                 //   $(this)
                 //       .find("div.media-img")
                 //       .children("img")
                 //       .attr("src")
       
-                  // Create a new Article using the `result` object built from scraping
                   db.Article.create(result)
                     .then(function(dbArticle) {
                         res.redirect("/");
                     })
                     .catch(function(err) {
-                      // If an error occurred, log it
                       console.log(err);
                     });
                 // });
-            });
+            // });
         // })
-    };
+    });
 
     app.get("/", function(req, res){
 
