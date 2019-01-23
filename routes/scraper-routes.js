@@ -4,7 +4,7 @@ var db = require("../models");
 module.exports = function(app){
 
     app.get("/scrape", function(req, res) {
-        db.Article.remove({saved:false}).then(function(){
+        db.Article.deleteMany({saved:false}).then(function(){
             // axios.get("https://www.gamespot.com/news/").then(function(response) {
             //     var $ = cheerio.load(response.data);        
             //     $("article.media-article").each(function(i, element) {
@@ -87,12 +87,12 @@ module.exports = function(app){
     })
 
     app.delete("/article", function(req, res){
-        db.Article.remove({_id: req.body.id}).then(function(result){
+        db.Article.deleteMany({_id: req.body.id}).then(function(result){
             res.json("deleted");
         })
     })
     app.delete("/note", function(req, res){
-        db.Note.remove({_id: req.body.id}).then(function(result){
+        db.Note.deleteMany({_id: req.body.id}).then(function(result){
             res.json("deleted");
         })
     })
