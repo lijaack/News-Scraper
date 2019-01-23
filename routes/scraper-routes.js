@@ -5,6 +5,9 @@ module.exports = function(app){
 
     app.get("/scrape", function(req, res) {
         db.Article.deleteMany({saved:false}).then(function(){
+
+
+            // change link
             axios.get("https://www.gamespot.com/").then(function(response) {
             //     var $ = cheerio.load(response.data);        
             //     $("article.media-article").each(function(i, element) {
