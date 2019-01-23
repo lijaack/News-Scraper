@@ -1,7 +1,9 @@
 $(document).ready(function() {
 
-    $("#save-article").on("click", saveArticle);
-    $("#delete-article").on("click", deleteArticle);
+    $(".save-article").on("click", saveArticle);
+    $(".delete-article").on("click", deleteArticle);
+    $(".add-note").on("click", addNote);
+
 
     function saveArticle(){
         console.log("1")
@@ -34,7 +36,23 @@ $(document).ready(function() {
         });
     }
 
+    function addNote(){
+        var id = $(this).data("id");
+        var note = $("#note-" + id).val();
 
+        $.ajax({
+            method: "POST",
+            url: "/note",
+            data: {
+                id: id,
+                note: note
+            }
+        })
+        .then(function(data) {
+
+            location.reload();
+        });
+    }
 
 
 

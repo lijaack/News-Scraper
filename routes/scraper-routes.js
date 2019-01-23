@@ -60,7 +60,10 @@ module.exports = function(app){
     })
 
     app.get("/saved", function(req, res){
-        db.Article.find({saved: true}).then(function(dbArticle){
+        db.Article.find({saved: true})
+        .populate("note")
+        .then(function(dbArticle){
+            console.log(dbArticle)
             var hbsObject = {
                 article: dbArticle
             };
@@ -69,12 +72,26 @@ module.exports = function(app){
     })
 
     app.post("/saved",function(req, res){
-        console.log("3")
-
         db.Article.update({_id: req.body.id}, {$set: {"saved": true}}).then(function(result){
             console.log("4")
             res.json("deleted");
         })
+    })
+
+    app.post("/note", function(req, res){
+        db.Note.create({
+            body: req.body.note
+        })
+        .then(function(dbNote) {
+          return db.Article.findOneAndUpdate({ _id: req.body.id }, {$push:{ note: dbNote._id }}, { new: true });
+        })
+        .then(function(dbArticle) {
+          res.json(dbArticle);
+        })
+        .catch(function(err) {
+          res.json(err);
+        });
+
     })
 
     app.delete("/article", function(req, res){
