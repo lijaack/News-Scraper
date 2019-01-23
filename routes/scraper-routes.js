@@ -29,16 +29,14 @@ module.exports = function(app){
                   // Create a new Article using the `result` object built from scraping
                   db.Article.create(result)
                     .then(function(dbArticle) {
+                        res.redirect("/");
                     })
                     .catch(function(err) {
                       // If an error occurred, log it
                       console.log(err);
                     });
                 });
-            
-                // Send a message to the client
-                res.redirect("/");
-              });
+            });
         // })
     });
 
