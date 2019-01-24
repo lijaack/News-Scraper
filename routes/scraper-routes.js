@@ -8,7 +8,7 @@ module.exports = function(app){
 
 
             // change link
-            axios.get("https://www.gamespot.com/").then(function(response) {
+            axios.get("https://www.pcgamer.com/news/").then(function(response) {
             //     var $ = cheerio.load(response.data);        
             //     $("article.media-article").each(function(i, element) {
                   // Save an empty result object
