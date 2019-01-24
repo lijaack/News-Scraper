@@ -7,40 +7,38 @@ module.exports = function(app){
         db.Article.deleteMany({saved:false}).then(function(){
 
 
-            // change link
             axios.get("https://www.pcgamer.com/news/").then(function(response) {
-            //     var $ = cheerio.load(response.data);        
-            //     $("article.media-article").each(function(i, element) {
-                  // Save an empty result object
+                var $ = cheerio.load(response.data);        
+                $("div.listingResult.small").each(function(i, element) {
+
                   var result = {};
-               
-                  result.title = "asdf"
-                //   $(this)
-                //       .find("h3.media-title")
-                //       .text();
-                  result.link = "asdf"
-                //   $(this)
-                //       .children("a")
-                //       .attr("href");
-                  result.summary = "asdf"
-                //   $(this)
-                //       .find("p.media-deck")
-                //       .text()
-                  result.image = "sdftgsdf"
-                //   $(this)
-                //       .find("div.media-img")
-                //       .children("img")
-                //       .attr("src")
+
+                  result.title = $(this)
+                      .find("h3.article-name")
+                      .text();
+                  result.link = $(this)
+                      .children("a")
+                      .attr("href");
+                  result.summary = $(this)
+                      .find("p.synopsis")
+                      .text()
+                  result.image =$(this)
+                      .find("div.image-remove-reflow-container")
+                      .data("original")
       
                   db.Article.create(result)
                     .then(function(dbArticle) {
-                        res.redirect("/");
+
                     })
                     .catch(function(err) {
                       console.log(err);
                     });
-                // });
+
+                });
+                res.redirect("/");
+
             });
+
         })
     });
 
