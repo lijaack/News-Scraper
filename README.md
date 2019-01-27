@@ -19,4 +19,4 @@ You can check out the app here. https://hidden-falls-98196.herokuapp.com/
 * Cheerios.js
 
 
-![picture]()
+![picture](not-gamestop.gif)
